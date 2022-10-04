@@ -2,9 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
 </head>
 <body>
-    
+    <script>
+        function getComputerChoice(){
+            let ComputerChoice = Math.floor(Math.random() * 3)
+            return ComputerChoice;
+        }
+
+        function playRound(playerScore, computerScore){
+            
+            let player = prompt("Choose Rock, Paper or Scissors! :)");
+        
+            let playerSelection = player.toLowerCase();
+        
+            let computerSelection = getComputerChoice();
+            
+            if(playerSelection == "rock"){
+                if(computerSelection == 0){
+                    console.log("Draw!")
+                    return 0;
+                }else if(computerSelection == 1){
+                    console.log("Lose!")
+                    return 1;
+                }else if(computerSelection == 2){
+                    console.log("Win!")
+                    return 2;
+                }
+            }else if(playerSelection == "paper"){
+                if(computerSelection == 0){
+                    console.log("Win!")
+                    return 2;
+                }else if(computerSelection == 1){
+                    console.log("Draw!")
+                    return 0;
+                }else if(computerSelection == 2){
+                    console.log("Lose!")
+                    return 1;
+                }
+            }else if(playerSelection == "scissors"){
+                if(computerSelection == 0){
+                    console.log("Lose!")
+                    return 1;
+                }else if(computerSelection == 1){
+                    console.log("Win!")
+                    return 2;
+                }else if(computerSelection == 2){
+                    console.log("Draw!")
+                    return 0;
+                    
+                }
+            }
+            
+        }
+
+        function game(playRound){
+            for(let i = 0; i < 5; i++){
+                
+                let score = playRound();
+                if(score == 1){
+                    computerScore++;
+                }else if(score == 2){
+                    playerScore++;
+                }
+
+            }
+            console.log("Your score:" + playerScore)
+            console.log("Computer score:" + computerScore)
+            if(playerScore > computerScore){
+                console.log("You won!")
+            }else if(playerScore < computerScore){
+                console.log("You lose!")
+            }else{
+                console.log("Draw!")
+            }
+        }
+
+        
+        let playerScore = 0;
+        let computerScore = 0;
+        game(playRound);
+
+
+
+    </script>
 
 </body>
 </html>
